@@ -36,6 +36,8 @@ replaceEnvSecrets
 
 # default is "production" in config/app.php but "selfhosted" in config/ninja.php, lets force it anyway
 export APP_ENV="${APP_ENV:-production}"
+# default is the same but we need it here, so lets define it now if it isn't already
+export APP_NAME="${APP_NAME:-"Invoice Ninja"}"
 
 # default is "forge" (config/database.php) for both
 export DB_DATABASE="${DB_DATABASE:-invoiceninja}"
@@ -68,13 +70,13 @@ export QUEUE_CONNECTION="${QUEUE_CONNECTION:-database}"
 # default is "default" (config/queue.php), which defeat the purpose
 export REDIS_QUEUE="${REDIS_QUEUE:-"{default}"}"
 
-if [ -z "$SESSION_SECURE_COOKIE" ]; then
-	echo "You did not defined the SESSION_SECURE_COOKIE environment variable. The default is false but if you access Invoice Ninja only through a secure HTTPS connection, you can set it to true to increase security."
-	export SESSION_SECURE_COOKIE="false"
-fi
-
 if [ "$1" != "supervisord" ]; then
 	exec "$@"
+fi
+
+if [ -z "${SESSION_SECURE_COOKIE:-}" ]; then
+	echo "You did not defined the SESSION_SECURE_COOKIE environment variable. The default is false but if you access Invoice Ninja only through a secure HTTPS connection, you can set it to true to increase security."
+	export SESSION_SECURE_COOKIE="false"
 fi
 
 php artisan optimize
