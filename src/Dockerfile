@@ -68,6 +68,8 @@ ENV IN_INSTALL_DIR=$IN_INSTALL_DIR
 ENV IS_DOCKER=true
 ENV REQUIRE_HTTPS=false
 ENV SNAPPDF_CHROMIUM_PATH=/usr/bin/chromium
+# mitigate "production.ERROR: Writing to directory /var/www/.config/psysh is not allowed." exception
+ENV XDG_CONFIG_HOME=/var/www/html/.config
 
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]
 CMD [ "supervisord", "-c", "/etc/supervisord.conf" ]
