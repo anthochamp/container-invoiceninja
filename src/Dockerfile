@@ -18,7 +18,7 @@ RUN set -ex; \
 	fi; \
 	wget -q -O /tmp/invoiceninja.tar "$DOWNLOAD_URL"
 
-FROM php:8.2-apache
+FROM php:8.3-apache@sha256:b84148f7453d86e5b6a325aaaa70fbf3e8f455eb958bd398346912e5f03c991e
 
 ARG IN_INSTALL_DIR=/usr/share/invoiceninja
 
