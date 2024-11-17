@@ -79,21 +79,22 @@ if [ -z "${SESSION_SECURE_COOKIE:-}" ]; then
 	export SESSION_SECURE_COOKIE="false"
 fi
 
-php artisan optimize
-#php artisan package:discover
-php artisan migrate --isolated --force
+runuser -u www-data php artisan optimize
+
 # required for filesystems.links to be created (symlink of public/storage to storage/app/public)
-php artisan storage:link
+runuser -u www-data php artisan storage:link
+
+runuser -u www-data php artisan migrate --isolated --force
 
 uninitialized=$(php artisan tinker --execute='echo Schema::hasTable("accounts") && !App\Models\Account::all()->first();')
 if [ "$uninitialized" = "1" ]; then
-	php artisan db:seed
+	runuser -u www-data php artisan db:seed
 
 	if [ -n "${IN_INITIAL_ACCOUNT_EMAIL:-}" ] && [ -n "${IN_INITIAL_ACCOUNT_PASSWORD:-}" ]; then
-		php artisan ninja:create-account --email "$IN_INITIAL_ACCOUNT_EMAIL" --password "$IN_INITIAL_ACCOUNT_PASSWORD"
+		runuser -u www-data php artisan ninja:create-account --email "$IN_INITIAL_ACCOUNT_EMAIL" --password "$IN_INITIAL_ACCOUNT_PASSWORD"
 	fi
 
-	php artisan ninja:react
+	runuser -u www-data php artisan ninja:react
 fi
 
 exec docker-php-entrypoint "$@"
