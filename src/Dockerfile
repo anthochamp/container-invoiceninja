@@ -54,6 +54,14 @@ RUN set -ex; \
 	rm -r /var/www/html; \
 	ln -s $IN_INSTALL_DIR/public /var/www/html
 
+# workaround filesystems.php configuration to get a single Docker volume
+RUN set -ex; \
+	runuser -u www-data -- mkdir -p $IN_INSTALL_DIR/storage/app/public; \
+	mv -f $IN_INSTALL_DIR/public/storage/* $IN_INSTALL_DIR/storage/app/public || true; \
+	rm -rf $IN_INSTALL_DIR/public/storage; \
+	runuser -u www-data -- ln -s $IN_INSTALL_DIR/storage/app/public $IN_INSTALL_DIR/public/storage;
+
+
 RUN a2enmod rewrite
 
 COPY --chmod=644 /rootfs/etc/supervisord.conf /etc

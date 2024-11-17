@@ -36,7 +36,7 @@ replaceEnvSecrets
 
 # default is "production" in config/app.php but "selfhosted" in config/ninja.php, lets force it anyway
 export APP_ENV="${APP_ENV:-production}"
-# default is the same but we need it here, so lets define it now if it isn't already
+# default is the same (config/app.php) but we need it here, so lets define it now if it isn't already
 export APP_NAME="${APP_NAME:-"Invoice Ninja"}"
 
 # default is "forge" (config/database.php) for both
@@ -82,6 +82,8 @@ fi
 php artisan optimize
 #php artisan package:discover
 php artisan migrate --isolated --force
+# required for filesystems.links to be created (symlink of public/storage to storage/app/public)
+php artisan storage:link
 
 uninitialized=$(php artisan tinker --execute='echo Schema::hasTable("accounts") && !App\Models\Account::all()->first();')
 if [ "$uninitialized" = "1" ]; then
