@@ -1,5 +1,5 @@
 # hadolint ignore=DL3007
-FROM alpine:latest AS download
+FROM alpine:latest@sha256:1e42bbe2508154c9126d48c2b8a75420c3544343bf86fd041fb7527e017a4b4a AS download
 
 # will download the latest available version if empty/undefined
 ARG IN_VERSION=
@@ -18,7 +18,7 @@ RUN set -ex; \
 	fi; \
 	wget -q -O /tmp/invoiceninja.tar "$DOWNLOAD_URL"
 
-FROM php:8.2-apache
+FROM php:8.2-apache@sha256:5690ede05cc3317605581d11aad0500d57ea8f3c2bfb44b4ee34e3877b56653a
 
 ARG IN_INSTALL_DIR=/usr/share/invoiceninja
 
