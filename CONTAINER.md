@@ -7,10 +7,10 @@ Sources are available on [GitHub](https://github.com/anthochamp/container-invoic
 <!-- TOC tocDepth:2..3 chapterDepth:2..6 -->
 
 - [Image tags](#image-tags)
-- [How to use this image (TODO)](#how-to-use-this-image-todo)
+- [How to use this image](#how-to-use-this-image)
 - [Application configuration](#application-configuration)
   - [Initial account](#initial-account)
-  - [Ninja (TODO)](#ninja-todo)
+  - [Ninja](#ninja)
 - [Framework configuration](#framework-configuration)
   - [Application](#application)
   - [Broadcasting](#broadcasting)
@@ -22,7 +22,7 @@ Sources are available on [GitHub](https://github.com/anthochamp/container-invoic
   - [Mail](#mail)
   - [Queues](#queues)
   - [Session](#session)
-- [Third-party integrations (TODO)](#third-party-integrations-todo)
+- [Third-party integrations](#third-party-integrations)
   - [Ably](#ably)
   - [Amazon (common)](#amazon-common)
   - [Amazon DynamoDB](#amazon-dynamodb)
@@ -60,7 +60,7 @@ Additional tags allows versioning of the Docker definition and scripts :
 - The `x.y.z`, `x.y`, and `x` parts are the Invoice Ninja official versions.
 - The `A.B.C` is the version of the Docker definition and scripts.
 
-## How to use this image (TODO)
+## How to use this image
 
 First, you'll need to generate an application key :
 
@@ -92,15 +92,11 @@ In particular, this can be used to load values from Docker secrets stored in `/r
 
 **Default**: *empty*
 
-### Ninja (TODO)
+### Ninja
 
 **References**:
 
 - [config/ninja.php](https://github.com/invoiceninja/invoiceninja/blob/v5-stable/config/ninja.php)
-
-verifier aussi dans le code
-
-#### NINJA_CLIENT_PORTAL
 
 ## Framework configuration
 
@@ -269,7 +265,7 @@ Available disk configurations:
 
 | Configuration | Description | Parameters |
 | - | - | - |
-| `public` | Stores in `storage` directory | |
+| `public` | Stores in `app/public` directory | |
 | `s3` | Amazon S3 | See [Third party > Amazon S3](#amazon-s3) |
 | `r2` | Cloudflare R2 | [Third party > Cloudflare R2](#cloudflare-r2) |
 | `gcs` | Google Cloud Storage | [Third party > Google Cloud Storage](#google-cloud-storage) |
@@ -567,7 +563,7 @@ Either `lax`, `strict`, `none` or empty.
 
 Determines how your cookies behave when cross-site requests take place, and can be used to mitigate CSRF attacks.
 
-## Third-party integrations (TODO)
+## Third-party integrations
 
 ### Ably
 

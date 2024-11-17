@@ -64,10 +64,10 @@ VOLUME [ "$IN_INSTALL_DIR/storage" ]
 
 WORKDIR $IN_INSTALL_DIR
 
-ENV IN_INSTALL_DIR $IN_INSTALL_DIR
-ENV IS_DOCKER true
-ENV REQUIRE_HTTPS false
-ENV SNAPPDF_CHROMIUM_PATH /usr/bin/chromium
+ENV IN_INSTALL_DIR=$IN_INSTALL_DIR
+ENV IS_DOCKER=true
+ENV REQUIRE_HTTPS=false
+ENV SNAPPDF_CHROMIUM_PATH=/usr/bin/chromium
 
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]
 CMD [ "supervisord", "-c", "/etc/supervisord.conf" ]
