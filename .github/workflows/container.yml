@@ -102,10 +102,10 @@ jobs:
             type=edge
             type=semver,pattern=${{ env.IN_VERSION }}+{{version}}
             type=semver,pattern=${{ env.IN_MAJOR }}.${{ env.IN_MINOR }}+{{version}}
-            type=semver,pattern=${{ env.IN_MAJOR }}+{{version}},enable=${{ env.IN_MAJOR == 0 }}
+            type=semver,pattern=${{ env.IN_MAJOR }}+{{version}},enable=${{ env.IN_MAJOR != 0 }}
             type=semver,pattern=${{ env.IN_VERSION }}
             type=semver,pattern=${{ env.IN_MAJOR }}.${{ env.IN_MINOR }}
-            type=semver,pattern=${{ env.IN_MAJOR }},enable=${{ env.IN_MAJOR == 0 }}
+            type=semver,pattern=${{ env.IN_MAJOR }},enable=${{ env.IN_MAJOR != 0 }}
 
       - name: Build and push Docker images
         id: build-and-push
