@@ -47,18 +47,37 @@ Sources are available on [GitHub](https://github.com/anthochamp/container-invoic
 
 ## Image tags
 
-Versioning follows the official releases of Invoice Ninja.
+- `x.y.z-invoiceninjaA.B.C` tags the `x.y.z` container image version, embedded with
+the Invoice Ninja `A.B.C` version.
+- `edge-invoiceninjaA.B.C` tags the container image built from the last repository
+commit, embedded with the Invoice Ninja `A.B.C` version.
 
-- `x.y.z`, `x.y` and `x` tags releases on multiple semver levels
-- `latest` tags the latest release
-- `edge` tags the image build automatically on the latest Git commit
+Tags aliases :
 
-Additional tags allows versioning of the Docker definition and scripts :
-
-- `x.y.z-A.B.C`, `x.y-A.B.C`, and `x-A.B.C`
-
-- The `x.y.z`, `x.y`, and `x` parts are the Invoice Ninja official versions.
-- The `A.B.C` is the version of the Docker definition and scripts.
+- `x.y-invoiceninjaA.B.C` aliases the latest patch version of the container image `x.y`
+major+minor version, embedded with the Invoice Ninja `A.B.C` version;
+- `x-invoiceninjaA.B.C` aliases the latest minor+patch version of the container image
+`x` major version, embedded with the Invoice Ninja `A.B.C` version;
+- `x.y.z` aliases the `x.y.z` container image version embedded with the latest
+Invoice Ninja version (Note: only the latest container image version gets updated);
+- `x.y` aliases the latest patch version of the container image `x.y` major+minor
+version, embedded with the latest Invoice Ninja release (Note: only the latest container
+image major+minor version gets updated);
+- `x` aliases the latest minor+patch version of the container image `x` major
+version, embedded with the latest Invoice Ninja version (Note: only the latest container
+image major version gets updated);
+- `invoiceninjaA.B` aliases the latest container image version, embedded with the latest
+patch version of the Invoice Ninja `A.B` major+minor version;
+- `invoiceninjaA` aliases the latest container image version, embedded with the latest
+minor+patch version of the Invoice Ninja `A` major version;
+- `latest` aliases the latest `x.y.z-invoiceninjaA.B.C` tag;
+- `edge-invoiceninjaA.B` aliases the container image built from the last repository
+commit, embedded with the latest patch version of the Invoice Ninja `A.B` major+minor
+version;
+- `edge-invoiceninjaA` aliases the container image built from the last repository
+commit, embedded with the latest minor+patch version of the Invoice Ninja `A` major
+version.
+- `edge` aliases the latest `edge-invoiceninjaA.B.C` tag;
 
 ## How to use this image
 
