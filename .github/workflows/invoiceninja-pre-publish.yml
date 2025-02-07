@@ -1,4 +1,4 @@
-name: Acme-dns container pre-publish
+name: invoiceninja container pre-publish
 
 on:
   workflow_call:
