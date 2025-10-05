@@ -71,6 +71,23 @@ export QUEUE_CONNECTION="${QUEUE_CONNECTION:-database}"
 # default is "default" (config/queue.php), which defeat the purpose
 export REDIS_QUEUE="${REDIS_QUEUE:-"{default}"}"
 
+export PHP_MEMORY_LIMIT="${PHP_MEMORY_LIMIT:-512M}" # already defined by php image
+export PHP_UPLOAD_LIMIT="${PHP_UPLOAD_LIMIT:-512M}" # already defined by php image
+export PHP_MAX_TIME="${PHP_MAX_TIME:-1800}"
+export APACHE_BODY_LIMIT="${APACHE_BODY_LIMIT:-536870912}"
+
+cat <<EOF >"$PHP_INI_DIR/conf.d/invoiceninja.ini"
+memory_limit=$PHP_MEMORY_LIMIT
+upload_max_filesize=$PHP_UPLOAD_LIMIT
+post_max_size=$PHP_UPLOAD_LIMIT
+max_execution_time=$PHP_MAX_TIME
+max_input_time=$PHP_MAX_TIME
+EOF
+
+cat <<EOF >"/etc/apache2/conf-available/apache-limits.conf"
+LimitRequestBody $APACHE_BODY_LIMIT
+EOF
+
 if [ "$1" != "supervisord" ]; then
 	exec "$@"
 fi

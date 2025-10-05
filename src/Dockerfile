@@ -23,7 +23,8 @@ FROM php:8.4.13-apache@sha256:6320fa321ae17e49e6da9cf8404e49f08a6404ac39e0a7d3f9
 ARG IN_INSTALL_DIR=/usr/share/invoiceninja
 
 RUN set -ex; \
-	mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+	mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"; \
+	ln -s "/etc/apache2/conf-available/apache-limits.conf" "/etc/apache2/conf-enabled/"
 
 # hadolint ignore=DL3008
 RUN set -ex; \
