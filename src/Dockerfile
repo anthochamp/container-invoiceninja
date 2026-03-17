@@ -9,7 +9,7 @@ RUN set -ex; \
 	wget -q -O /tmp/invoiceninja.tar \
 	"https://github.com/invoiceninja/invoiceninja/releases/download/v${IN_VERSION}/invoiceninja.tar"
 
-FROM php:8.5.4-apache@sha256:0a7f9449974d568e1861e29387bacfa8f484e8f113a121f745a6e550ef26c06b
+FROM php:8.5.4-apache@sha256:e55a9f8e4caa09c6a31ec752b307675d847bb8546d975f379128cb2a99842b96
 
 ARG IN_INSTALL_DIR=/usr/share/invoiceninja
 
