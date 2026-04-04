@@ -1,7 +1,7 @@
 FROM alpine:3.23.3@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS download
 
 # renovate: datasource=github-releases depName=invoiceninja/invoiceninja
-ARG IN_VERSION=5.12.70
+ARG IN_VERSION=5.13.14
 
 SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
 
