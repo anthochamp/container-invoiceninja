@@ -1,5 +1,7 @@
 {
 	"private": true,
+	"description": "Alternative Invoice Ninja container for a self-hosted invoicing and billing platform",
+	"author": "Anthony Champagne <dev@anthonychampagne.fr>",
 	"scripts": {
 		"test": "node --import=tsx --test-concurrency 1 --test tests/**/*.test.*",
 		"tsc:check": "tsc -noEmit -p ./tsconfig.json",
