@@ -1,4 +1,4 @@
-FROM alpine:3.23.3@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659 AS download
+FROM alpine:3.24.1@sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b AS download
 
 # renovate: datasource=github-releases depName=invoiceninja/invoiceninja
 ARG IN_VERSION=5.13.14
@@ -9,7 +9,7 @@ RUN set -ex; \
 	wget -q -O /tmp/invoiceninja.tar \
 	"https://github.com/invoiceninja/invoiceninja/releases/download/v${IN_VERSION}/invoiceninja.tar"
 
-FROM php:8.5.5-apache@sha256:103a8cd59a029b387470deace9736a7bc5aeb167a746774c68da82bb469c578c
+FROM php:8.5.8-apache@sha256:eacc0d98992683cb46e4f8f44b2418a0323855dc8b59d32dc54f7a9b90a966dd
 
 ARG IN_INSTALL_DIR=/usr/share/invoiceninja
 
